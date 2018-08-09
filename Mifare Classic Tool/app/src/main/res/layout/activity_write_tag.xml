@@ -54,14 +54,15 @@
             <RelativeLayout
                 android:id="@+id/relativeLayoutWriteTagWriteBlock"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="358dp"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
-                android:tag="write_block_layout" >
+                android:tag="write_block_layout">
 
                 <!-- Dummy for preventing EditTexts to get focus on
                 Activity startup -->
                 <LinearLayout
+                    android:id="@+id/linearLayout"
                     android:layout_width="0dip"
                     android:layout_height="0dip"
                     android:focusable="true"
@@ -152,13 +153,76 @@
                     android:inputType="textCapCharacters|textNoSuggestions"
                     android:maxLength="32" />
 
+                <TextView
+                    android:id="@+id/textViewWriteScentType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/editTextWriteTagData"
+                    android:layout_marginTop="11dp"
+                    android:padding="5dp"
+                    android:text="Scent Type"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <EditText
+                    android:id="@+id/editTextWriteScentType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/textViewWriteScentType"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginStart="14dp"
+                    android:layout_toEndOf="@+id/textViewWriteScentType"
+                    android:layout_toRightOf="@+id/textViewWriteScentType"
+                    android:hint="@string/hint_int_423"
+                    android:inputType="textCapCharacters|textNoSuggestions"
+                    android:maxLength="32" />
+
+                <TextView
+                    android:id="@+id/textViewWriteCapsuleID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/editTextWriteScentType"
+                    android:layout_marginTop="15dp"
+                    android:layout_toEndOf="@+id/linearLayout"
+                    android:layout_toRightOf="@+id/linearLayout"
+                    android:padding="5dp"
+                    android:text="Capsule ID"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <EditText
+                    android:id="@+id/editTextWriteCapsuleID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/textViewWriteCapsuleID"
+                    android:layout_alignBottom="@+id/textViewWriteCapsuleID"
+                    android:layout_alignLeft="@+id/editTextWriteScentType"
+                    android:layout_alignStart="@+id/editTextWriteScentType"
+                    android:hint="@string/hint_int_423"
+                    android:inputType="textCapCharacters|textNoSuggestions"
+                    android:maxLength="32" />
+
                 <Button
                     android:id="@+id/buttonWriteTagBlock"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/editTextWriteTagData"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginBottom="17dp"
                     android:onClick="onWriteBlock"
                     android:text="@string/action_write_block" />
+
+                <Button
+                    android:id="@+id/buttonRefresh"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/editTextWriteCapsuleID"
+                    android:layout_marginTop="11dp"
+                    android:onClick="onRefresh"
+                    android:text="Refresh" />
             </RelativeLayout>
 
             <!-- Seperator -->

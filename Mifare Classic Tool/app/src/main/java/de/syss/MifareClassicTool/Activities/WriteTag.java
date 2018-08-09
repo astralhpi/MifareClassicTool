@@ -45,6 +45,7 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.io.Serializable;
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -93,6 +94,29 @@ public class WriteTag extends BasicActivity {
     private boolean mWriteDumpFromEditor = false;
     private String[] mDumpFromEditor;
 
+    private EditText mScentTypeText;
+    private EditText mCapsuleIDText;
+
+    public void onRefresh(View view) {
+        int timestamp = (int) (System.currentTimeMillis() / 1000);
+        short scentType = Short.parseShort(String.valueOf(mScentTypeText.getText()));
+        long capsuleID = Long.parseLong(String.valueOf(mCapsuleIDText.getText()));
+
+        ByteBuffer buffer = ByteBuffer.allocate(16);
+        buffer.putInt(timestamp);
+        buffer.putShort(scentType);
+        buffer.putLong(capsuleID);
+        buffer.putShort((short) 0);
+
+        StringBuilder sb = new StringBuilder(32);
+
+        for(byte b:buffer.array()) {
+            sb.append(String.format("%02x", b));
+        }
+
+        mDataText.setText(sb.toString());
+    }
+
 
     /**
      * Initialize the layout and some member variables. If the Intent
@@ -108,7 +132,9 @@ public class WriteTag extends BasicActivity {
         setContentView(R.layout.activity_write_tag);
 
         mSectorTextBlock = (EditText) findViewById(R.id.editTextWriteTagSector);
+        mSectorTextBlock.setText("1");
         mBlockTextBlock = (EditText) findViewById(R.id.editTextWriteTagBlock);
+        mBlockTextBlock.setText("0");
         mDataText = (EditText) findViewById(R.id.editTextWriteTagData);
         mSectorTextVB = (EditText) findViewById(
                 R.id.editTextWriteTagValueBlockSector);
@@ -123,6 +149,8 @@ public class WriteTag extends BasicActivity {
                 R.id.checkBoxWriteTagDumpStaticAC);
         mWriteManufBlock = (CheckBox) findViewById(
                 R.id.checkBoxWriteTagDumpWriteManuf);
+        mScentTypeText = (EditText) findViewById(R.id.editTextWriteScentType);
+        mCapsuleIDText = (EditText) findViewById(R.id.editTextWriteCapsuleID);
 
         mWriteModeLayouts = new ArrayList<View>();
         mWriteModeLayouts.add(findViewById(
