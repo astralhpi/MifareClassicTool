@@ -175,8 +175,9 @@
                     android:layout_toEndOf="@+id/textViewWriteScentType"
                     android:layout_toRightOf="@+id/textViewWriteScentType"
                     android:hint="@string/hint_int_423"
-                    android:inputType="textCapCharacters|textNoSuggestions"
-                    android:maxLength="32" />
+                    android:inputType="number"
+                    android:maxLength="32"
+                    android:text="0" />
 
                 <TextView
                     android:id="@+id/textViewWriteCapsuleID"
@@ -199,8 +200,9 @@
                     android:layout_alignLeft="@+id/editTextWriteScentType"
                     android:layout_alignStart="@+id/editTextWriteScentType"
                     android:hint="@string/hint_int_423"
-                    android:inputType="textCapCharacters|textNoSuggestions"
-                    android:maxLength="32" />
+                    android:inputType="number"
+                    android:maxLength="32"
+                    android:text="0" />
 
                 <Button
                     android:id="@+id/buttonWriteTagBlock"
